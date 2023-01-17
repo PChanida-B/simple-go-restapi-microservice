@@ -1,0 +1,17 @@
+@base_url=http://localhost:8081
+# @name auth
+GET {{base_url}}/tokenz
+
+###
+@token = {{auth.response.body.$.token}}
+
+###
+PUT {{base_url}}/resources/5
+Content-Type: application/json
+
+{
+    "userName"  : "Watchful",
+    "phone"     : "0852062482",
+    "firstName" : "Harrison",
+    "lastname"  : "Keller"
+}

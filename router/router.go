@@ -80,12 +80,24 @@ func (r *Router) DELETE(relativePath string, handler HandlerFunc) {
 	})
 }
 
+func (r *Router) Group(relativePath string, handler HandlerFunc) *Router {
+	r.Engine.Group(relativePath, func(c *gin.Context) {
+		handler(&Context{c})
+	})
+	return r
+}
+
+// func (r *Router) Group(relativePath string) *Router {
+// 	r.Engine.Group(relativePath)
+// 	return r
+// }
+
 /* Convert Function App Format to Gin Format */
 type Context struct {
 	*gin.Context
 }
 
-func (c *Context) BindJSON() (r service.Request, err error) {
+func (c *Context) BindJSON(r interface{}) (err error) {
 	err = c.ShouldBindJSON(&r)
 	return
 }
@@ -96,4 +108,20 @@ func (c *Context) JSON(statusCode int, response interface{}) {
 
 func (c *Context) Status(statusCode int) {
 	c.Context.Status(statusCode)
+}
+
+func (c *Context) Param(key string) string {
+	return c.Context.Param(key)
+}
+
+func (c *Context) GetHeader(key string) string {
+	return c.Context.Request.Header.Get(key)
+}
+
+func (c *Context) Next() {
+	c.Context.Next()
+}
+
+func (c *Context) AbortWithStatus(code int) {
+	c.Context.AbortWithStatus(code)
 }

@@ -6,10 +6,7 @@ GET {{base_url}}/tokenz
 @token = {{auth.response.body.$.token}}
 
 ###
-DELETE {{base_url}}/todos/18
+DELETE {{base_url}}/resources/1
 Content-Type: application/json
-//Authorization: Bearer {{token}}
+Authorization: Bearer {{token}}
 
-{
-    "text": "test 1"
-}
