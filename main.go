@@ -22,7 +22,7 @@ func main() {
 	r := router.NewRouter()
 
 	/*New Handler*/
-	handler := service.NewHandler(store.NewMariaDBStore(os.Getenv("DB_CONN")))
+	handler := service.NewHandler(store.NewMariaDBStore(os.Getenv("DSN")))
 
 	authHandler := service.NewAuthHandler(auth.NewJWTAuth(os.Getenv("SIGN")))
 	r.GET("/tokenz", authHandler.AccessToken)
