@@ -17,12 +17,12 @@ This project is a sample REST APIs with microservices for my study and my practi
 ## Requirements
 
 API lists
-**GET** /tokenz
-**GET** /resources
-**GET** /resources/ID
-**POST** /resources
-**PULL** /resources/ID
-**DELETE** /resources/ID
+- **GET** /tokenz
+- **GET** /resources
+- **GET** /resources/ID
+- **POST** /resources
+- **PULL** /resources/ID
+- **DELETE** /resources/ID
 
 ## Non-Functional Requirements
 
@@ -50,15 +50,15 @@ restapi-container: to start sample REST APIs docker container
 start MariaDB, REST API contianer
 
 run command:
-> make maria
-> make restapi-image
-> make restapi-container
+- make maria
+- make restapi-image
+- make restapi-container
 
 
 ## API testing
 
 run file test example for API testing
-> test/create_data.http
-> test/read_data.http
-> test/update_data.http
-> test/delete_data.http
+- test/create_data.http
+- test/read_data.http
+- test/update_data.http
+- test/delete_data.http
